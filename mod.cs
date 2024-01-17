@@ -26,7 +26,7 @@ package LiFxJudgementHourFix
   }
   
   function LiFxJudgementHourFix::checkPlayers(%this) {
-    dbi.Select(LiFxJudgementHourFix,"kickClaimlessPlayers", "SELECT AccountID,Action FROM gm_action_log WHERE ActionTimeStamp BETWEEN FROM_UNIXTIME(" @ LiFxAdminOversight.LastCall @") AND CURRENT_TIMESTAMP()");
+    dbi.Select(LiFxJudgementHourFix,"kickClaimlessPlayers", );
     LiFxJudgementHourFix.LastCall = getUnixTime();
   }
 
