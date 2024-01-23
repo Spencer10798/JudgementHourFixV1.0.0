@@ -24,12 +24,12 @@ package LiFxJudgementHourFix
   }
   
   function LiFxJudgementHourFix::checkPlayers(%this) {
-    dbi.Select(LiFxJudgementHourFix,"kickClaimlessPlayers", "SELECT c.ID AS ClientId FROM `lifx_character` lc LEFT JOIN `character` c ON c.ID = lc.id CROSS JOIN nyu_ttmod_info info WHERE (c.GuildID IS NULL) AND (lc.loggedIn > info.boot_time) AND ((lc.loggedOut < lc.loggedIn) OR (lc.loggedOut IS null))");
+    dbi.Select(LiFxJudgementHourFix,"kickClaimlessPlayers", "SELECT c.ID AS ClientId FROM `lifx_character` lc JOIN `character` c ON c.ID = lc.id CROSS JOIN nyu_ttmod_info info WHERE (c.GuildID IS NULL) AND (lc.loggedIn > info.boot_time) AND ((lc.loggedOut < lc.loggedIn) OR (lc.loggedOut IS null))");
   }
 
   function LiFxJudgementHourFix::checkJHStatus(%this) {
     if (isJHActive()) {
-      checkPlayers();
+      checkPlayers(%this);
     }
   }
 
